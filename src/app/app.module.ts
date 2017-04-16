@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import 'hammerjs';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
