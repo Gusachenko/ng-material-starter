@@ -2,10 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-##Offline enhancement
+## Offline enhancement
 Need to create servise-worker.js and application work's offline.
 
-##Generete and use service-worker
+### Generete and use service-worker
 
 Generator config `/sw-precache-config.js`. To generate and use service-worker.js you will need proceed next steps:
 
@@ -19,11 +19,11 @@ If you running the project on `localhost` then you can skip that step.
 
 1. Go to `@angular/cli/tasks/serve.js`, find `run()` function then find `webpackDevServerConfiguration` variable than add to it next properties:
 
-`
+```
 cert: fs.readFileSync(this.project.root+ '/ssl/local.mat-cli-start.com.crt', 'utf8'),
 key: fs.readFileSync(this.project.root+ '/ssl/local.mat-cli-start.com.key', 'utf8'),
 https: true,
-`
+```
 
 2. Run `ng serve --ssl 1 --ssl-key "ssl/local.mat-cli-start.com.key" --ssl-cert "ssl/local.mat-cli-start.com.crt" --host 0.0.0.0 --port 4200`
 
