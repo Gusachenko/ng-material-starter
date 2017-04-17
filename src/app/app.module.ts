@@ -8,10 +8,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationPanelComponent
   ],
   imports: [
     BrowserModule,
