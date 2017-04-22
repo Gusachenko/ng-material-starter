@@ -1,6 +1,6 @@
 import { MaterialCliStarterPage } from './app.po';
 
-describe('material-cli-starter App', () => {
+describe('ng-material-starter App', () => {
   let page: MaterialCliStarterPage;
 
   beforeEach(() => {

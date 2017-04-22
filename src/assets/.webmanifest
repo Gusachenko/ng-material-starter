@@ -1,6 +1,6 @@
 {
-  "name": "MaterialCliStarter",
-  "short_name": "MatCliSt",
+  "name": "ng-material-starter",
+  "short_name": "ng-material-starter",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
