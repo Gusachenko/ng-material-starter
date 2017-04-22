@@ -12,7 +12,7 @@
         width: 30%;
         height: 100%;
 
-        float: left;
+        float: right;
 
 
   
@@ -22,6 +22,7 @@
             width: 70px;
             top: 50%;
             transform: translateY(-50%);
+            right: 0px;
 
             &>svg{
 
@@ -49,16 +50,21 @@
 
                     @keyframes rotate {
                     0% { transform: rotateY(0deg); }
-                    50% { transform: rotateY(180deg);
-                          fill:gold;
-                         }
-                    100% { transform: rotateY(360deg); }
+                    25% { 
+                        transform: rotateY(90deg);
+                        fill:white;
+                        }
+                    75% {   
+                        transform: rotateY(270deg);
+                        fill:gold;
+                        }
+                    100% { 
+                        transform: rotateY(360deg);
+                        fill:white; 
+                        }
                     } 
-
                 }
-
             }
-            
         }
 
     }
@@ -70,9 +76,33 @@
         width: 70%;
         height: 100%;
 
-        float: right;
+        float: left;
 
         // background: green;
+
+        .mobile-sidenav-button{
+            position: relative;
+            float: left;
+            height: 80%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            box-shadow: none;
+            border: 0px;
+            color: currentColor;
+
+            md-icon{
+                font-size: 48px;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: auto;
+                height: auto;
+            }
+
+        }
 
 
         .menu-block__links-list{
@@ -80,16 +110,18 @@
             position: relative;
             width: 100%;
             height: 100%;
-            float: right;
+            float: left;
 
                 ul{
                 position: relative;
-                float: right;
+                float: left;
                 list-style: none;
 
                 margin: 0;
                 top: 50%;
                 transform: translateY(-50%);
+
+                padding-left: 0px;
 
 
                     li{

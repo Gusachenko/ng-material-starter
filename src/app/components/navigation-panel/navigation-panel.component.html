@@ -1,6 +1,24 @@
 <md-toolbar class="mat-elevation-z6" color="primary">
 
-    <div class="container" role="navigation">
+    <nav class="container" role="navigation">
+
+      
+
+      <div class="menu-block">
+
+        <button md-fab (click)="sideNavOpen()" class="mobile-sidenav-button">
+          <md-icon>menu</md-icon>
+        </button>
+
+        <div class="menu-block__links-list">
+            <ul>
+              <li><button md-button>About</button></li>
+              <li><button md-button>Service</button></li>
+              <li><button md-button>Price</button></li>
+              <li><button md-button>Online order</button></li>
+            </ul>
+          </div>
+      </div>
 
       <div class="logo-block">
         <a href="/">
@@ -41,22 +59,8 @@
         </a>
       </div>
 
-      <div class="menu-block">
-
-        <div class="menu-block__links-list">
-            <ul>
-              <li><button md-button>About</button></li>
-              <li><button md-button>Service</button></li>
-              <li><button md-button>Price</button></li>
-              <li><button md-button>Online order</button></li>
-            </ul>
-          </div>
-      </div>
-
-    </div>
-    <button md-button (click)="sideNavOpen()">
-                Open sidenav
-    </button>
+    </nav>
+    
 
 
 

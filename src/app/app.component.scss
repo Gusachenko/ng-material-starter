@@ -1,5 +1,12 @@
-.tight-div{
-    height: 1800px;
-    border-left: 3px dashed orange;
-    border-bottom: 1px solid green;
+.main-container{
+    height: calc(100vh - 64px); //md-toolbar min-height: 64px
+    overflow: auto;
+
+    .tight-div{
+        height: 1800px;
+        border-left: 3px dashed orange;
+        border-bottom: 1px solid green;
+    }
+
 }
+
