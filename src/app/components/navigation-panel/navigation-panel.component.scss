@@ -30,7 +30,7 @@
                 height: 100%;
 
                 .ground{
-                    fill: lightskyblue;
+                    fill: #2196F3;
                     
                 }
                 .kiwi{
@@ -79,32 +79,50 @@
         float: left;
 
         // background: green;
-
-        .mobile-sidenav-button{
+        .menu-block__mobile{
             position: relative;
             float: left;
             height: 80%;
             top: 50%;
+            -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
-            background: transparent;
-            box-shadow: none;
-            border: 0px;
-            color: currentColor;
-            min-width: 30px;
-            width: auto;
 
-            md-icon{
-                font-size: 36px;
-                display: block;
-                position: absolute;
+            .menu-block__mobile__sidenav-button{
+                position: relative;
+                float: left;
+                height: 80%;
                 top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
+                transform: translateY(-50%);
+                background: transparent;
+                box-shadow: none;
+                border: 0px;
+                color: currentColor;
+                min-width: 30px;
                 width: auto;
-                height: auto;
+
+                md-icon{
+                    font-size: 36px;
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    width: auto;
+                    height: auto;
+                }
+
+            }
+            .menu-block__mobile__section-name{
+                top: 50%;
+                display: block;
+                position: relative;
+                transform: translateY(-50%);
+                margin-left: 20px;
+                float: left;
             }
 
         }
+        
 
 
         .menu-block__links-list{

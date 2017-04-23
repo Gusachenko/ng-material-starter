@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 import { GlobalStateServiceService } from 'app/services/global-state-service.service';
@@ -9,6 +9,8 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   styleUrls: ['./navigation-panel.component.scss']
 })
 export class NavigationPanelComponent implements OnInit {
+
+  @Input() mobileVersion : boolean; 
 
   private mainContentScrollValue: number;
   
@@ -35,7 +37,7 @@ export class NavigationPanelComponent implements OnInit {
 
   private setLogoKiwiStyles() : any {
         let styles = {
-            'transform':  'rotateY('+this.mainContentScrollValue+'deg)'
+            'transform':  'rotateY('+this.mainContentScrollValue * 0.1+'deg)'
         };
         return styles;
     }

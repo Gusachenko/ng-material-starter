@@ -1,10 +1,10 @@
 <md-sidenav-container class="m-sidenav-container" fullscreen>
 
-  <md-sidenav align="start" #sidenav class="example-sidenav">
-  Jolly good!
+  <md-sidenav *ngIf="mobileVersion" align="start" #sidenav class="example-sidenav">
+    Jolly good!
   </md-sidenav>
 
-  <app-navigation-panel></app-navigation-panel>
+  <app-navigation-panel [mobileVersion]="mobileVersion"></app-navigation-panel>
 
   <div #maincontent class="main-content" role="main">
 
@@ -18,10 +18,10 @@
         <md-icon>done</md-icon>
       </button>
 
+      <button *ngIf="mobileVersion" md-button (click)="m_sidenav.open()">
+                Open sidenav
+      </button>
 
-        <button md-button (click)="sidenav.open()">
-                  Open sidenav
-        </button>
     </div>
 
   </div>

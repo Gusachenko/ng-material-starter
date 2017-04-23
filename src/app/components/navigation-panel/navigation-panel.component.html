@@ -5,12 +5,16 @@
       
 
       <div class="menu-block">
+        <div *ngIf="mobileVersion" class="menu-block__mobile">
+          <button md-fab (click)="sideNavOpen()" class="menu-block__mobile__sidenav-button">
+            <md-icon>menu</md-icon>
+          </button>
+          <span class="menu-block__mobile__section-name">
+            Current section
+          </span>
+        </div>
 
-        <button md-fab (click)="sideNavOpen()" class="mobile-sidenav-button">
-          <md-icon>menu</md-icon>
-        </button>
-
-        <div class="menu-block__links-list">
+        <div *ngIf="!mobileVersion" class="menu-block__links-list">
             <ul>
               <li><button md-button>About</button></li>
               <li><button md-button>Service</button></li>
