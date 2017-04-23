@@ -4,12 +4,17 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class GlobalStateServiceService {
 
-  private sideNavOpenScource = new Subject<boolean>();
+  private sideNavOpenSource = new Subject<boolean>();
+  private mainContentScrollSource = new Subject<number>();
 
-  public sideNavState = this.sideNavOpenScource.asObservable();
+  public sideNavState = this.sideNavOpenSource.asObservable();
+  public mainContentScrollState = this.mainContentScrollSource.asObservable();
   
   public changeSideNavState(state: boolean){
-      this.sideNavOpenScource.next(state);
+      this.sideNavOpenSource.next(state);
+  }
+  public changeMainContentScrollState(scrollValue: number){
+      this.mainContentScrollSource.next(scrollValue);
   }
   
   constructor() { 

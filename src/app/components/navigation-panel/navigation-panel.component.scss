@@ -90,9 +90,11 @@
             box-shadow: none;
             border: 0px;
             color: currentColor;
+            min-width: 30px;
+            width: auto;
 
             md-icon{
-                font-size: 48px;
+                font-size: 36px;
                 display: block;
                 position: absolute;
                 top: 50%;

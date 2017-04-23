@@ -9,6 +9,8 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   styleUrls: ['./navigation-panel.component.scss']
 })
 export class NavigationPanelComponent implements OnInit {
+
+  private mainContentScrollValue: number;
   
   private subscription: Subscription;
 
@@ -17,6 +19,9 @@ export class NavigationPanelComponent implements OnInit {
   }
 
   constructor(private globalStateServiceService: GlobalStateServiceService) { 
+    globalStateServiceService.mainContentScrollState.subscribe( scrollValue => {
+          this.mainContentScrollValue = scrollValue;
+      });
     
   }
 
@@ -27,5 +32,12 @@ export class NavigationPanelComponent implements OnInit {
     // prevent memory leak when component destroyed
     this.subscription.unsubscribe();
   }
+
+  private setLogoKiwiStyles() : any {
+        let styles = {
+            'transform':  'rotateY('+this.mainContentScrollValue+'deg)'
+        };
+        return styles;
+    }
 
 }

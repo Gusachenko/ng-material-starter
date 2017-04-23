@@ -1,9 +1,12 @@
 {
   "name": "ng-material-starter",
-  "short_name": "ng-material-starter",
+  "short_name": "NgMatStart",
+  "version": "0.1",
+	"manifest_version": 1,
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
+  "theme_color": "#673ab7",
   "description": "A simply material cli starter.",
   "icons": [
 		 {
