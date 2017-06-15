@@ -1,9 +1,18 @@
-# ng-material-starter
+# Introduction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+Provides fast start for the Angular 4+ project with [Material Design](https://material.angular.io/). 
+
+`ng-material-starter` provides the following features:
+
+- Material Design(+ Material Icons, Roboto Fonts).
+- Responsive design for:
+    + mobile < 768px
+    + desktop > 768px
+- Project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
 
 ## Offline enhancement
-Need to create servise-worker.js and application work's offline.
+Need to create servise-worker.js and application will work offline.
 
 ### Generete and use service-worker
 
@@ -15,7 +24,7 @@ Generator config `/sw-precache-config.js`. To generate and use service-worker.js
 4. Run `npm start`
 
 ### Running with ng-serve
-If you running the project on `localhost` then you can skip that step.
+If you running the project on `localhost` then you can skip this step.
 
 1. Go to `@angular/cli/tasks/serve.js`, find `run()` function then find `webpackDevServerConfiguration` variable than add to it next properties:
 
