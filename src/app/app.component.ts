@@ -13,7 +13,7 @@ export class AppComponent {
   @ViewChild('sidenav') m_sidenav;
   @ViewChild('maincontent') m_mainContent;
 
-  private mobileVersion : boolean = false;
+  public mobileVersion : boolean = false;
 
   constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2){
     globalStateServiceService.sideNavState.subscribe( state => {

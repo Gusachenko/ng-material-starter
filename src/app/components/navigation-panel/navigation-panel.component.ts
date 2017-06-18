@@ -35,7 +35,7 @@ export class NavigationPanelComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  private setLogoKiwiStyles() : any {
+  public setLogoKiwiStyles() : any {
         let styles = {
             'transform':  'rotateY('+this.mainContentScrollValue * 0.1+'deg)'
         };
