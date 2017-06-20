@@ -3,7 +3,8 @@
   "short_name": "NgMatStart",
   "version": "0.1",
 	"manifest_version": 1,
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#673ab7",
@@ -27,6 +28,11 @@
    {
     "src": "icons/apple-touch-icon-256.png",
     "sizes": "256x256",
+    "type": "image/png"
+  },
+   {
+    "src": "icons/apple-touch-icon-256.png",
+    "sizes": "512x512",
     "type": "image/png"
   }],
   "related_applications": [{
