@@ -4,26 +4,28 @@ import { Subscription }   from 'rxjs/Subscription';
 import { GlobalStateServiceService } from 'app/services/global-state-service.service';
 
 @Component({
-  selector: 'app-navigation-panel',
-  templateUrl: './navigation-panel.component.html',
-  styleUrls: ['./navigation-panel.component.scss']
+  selector: 'app-child-controls-panel',
+  templateUrl: './child-controls-panel.component.html',
+  styleUrls: ['./child-controls-panel.component.scss']
 })
-export class NavigationPanelComponent implements OnInit {
+export class ChildControlsPanelComponent implements OnInit {
 
-  @Input() mobileVersion : boolean; 
+  public mobileVersion : boolean;
 
   private mainContentScrollValue: number;
-  
   private subscription: Subscription;
 
   public sideNavOpen(){
     this.globalStateServiceService.changeSideNavState(true);
   }
 
-  constructor(private globalStateServiceService: GlobalStateServiceService) { 
+  constructor(private globalStateServiceService: GlobalStateServiceService) {
     globalStateServiceService.mainContentScrollState.subscribe( scrollValue => {
           this.mainContentScrollValue = scrollValue;
-      });
+    });
+    globalStateServiceService.mobileVersionState.subscribe( state => {
+        this.mobileVersion = state;
+    });
     
   }
 
@@ -41,5 +43,4 @@ export class NavigationPanelComponent implements OnInit {
         };
         return styles;
     }
-
 }

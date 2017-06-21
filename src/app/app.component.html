@@ -1,11 +1,4 @@
-<md-sidenav-container class="m-sidenav-container" fullscreen>
-
-  <md-sidenav *ngIf="mobileVersion" align="start" #sidenav class="example-sidenav">
-    Jolly good!
-  </md-sidenav>
-
-  <app-navigation-panel [mobileVersion]="mobileVersion"></app-navigation-panel>
-
+<app-adaptive-navigation-panel>
   <div #maincontent class="main-content" role="main">
 
     <div class="tight-div">
@@ -17,16 +10,7 @@
         Angular Material works!
         <md-icon>done</md-icon>
       </button>
-
-      <button *ngIf="mobileVersion" md-button (click)="m_sidenav.open()">
-                Open sidenav
-      </button>
-
     </div>
 
   </div>
-
-
-
-
-</md-sidenav-container>
+</app-adaptive-navigation-panel>

@@ -10,26 +10,17 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   providers: [ GlobalStateServiceService ]
 })
 export class AppComponent {
-  @ViewChild('sidenav') m_sidenav;
   @ViewChild('maincontent') m_mainContent;
 
-  public mobileVersion : boolean = false;
-
   constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2){
-    globalStateServiceService.sideNavState.subscribe( state => {
-        this.m_sidenav.open();
-    });
-
-
-    this.checkWindowWidth();
     renderer.listen(window, 'resize', (event) => {
       this.checkWindowWidth();
     });
-      
   }
 
   ngAfterViewInit() {
-    
+    this.checkWindowWidth();
+
     this.renderer.listen(this.m_mainContent.nativeElement, 'scroll', (event) => {
         this.globalStateServiceService.changeMainContentScrollState(event.target.scrollTop);
     });
@@ -37,9 +28,10 @@ export class AppComponent {
 
   private checkWindowWidth() : void {
     if(window.innerWidth > 768){
-      this.mobileVersion = false;
+      this.globalStateServiceService.changeMobileVersionState(false);
+      
     }else{
-      this.mobileVersion = true;
+      this.globalStateServiceService.changeMobileVersionState(true);
     }
   }
 
