@@ -10,7 +10,7 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
 })
 export class ChildControlsPanelComponent implements OnInit {
 
-  public mobileVersion : boolean;
+  public mobileVersion : boolean = false;
 
   private mainContentScrollValue: number;
   private subscription: Subscription;

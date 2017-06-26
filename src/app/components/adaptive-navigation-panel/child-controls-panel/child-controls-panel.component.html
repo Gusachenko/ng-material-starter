@@ -2,28 +2,6 @@
 
     <nav class="container" role="navigation">
 
-      
-
-      <div class="menu-block">
-        <div *ngIf="mobileVersion" class="menu-block__mobile">
-          <button md-fab (click)="sideNavOpen()" class="menu-block__mobile__sidenav-button">
-            <md-icon>menu</md-icon>
-          </button>
-          <span class="menu-block__mobile__section-name">
-            Current section
-          </span>
-        </div>
-
-        <div *ngIf="!mobileVersion" class="menu-block__links-list">
-            <ul>
-              <li><button md-button>About</button></li>
-              <li><button md-button>Service</button></li>
-              <li><button md-button>Price</button></li>
-              <li><button md-button>Online order</button></li>
-            </ul>
-        </div>
-      </div>
-
       <div class="logo-block">
         <a href="/">
           <!--<img src="assets/icons/logo.svg" alt="logo"/>-->
@@ -62,6 +40,25 @@
           </div>
         </a>
       </div>
+
+      <div class="menu-block">
+        <div *ngIf="mobileVersion" class="menu-block__mobile">
+          <button md-fab (click)="sideNavOpen()" class="menu-block__mobile__sidenav-button">
+            <md-icon>menu</md-icon>
+          </button>
+          <span class="menu-block__mobile__section-name">
+            Current section
+          </span>
+        </div>
+
+        <div *ngIf="!mobileVersion" class="menu-block__links-list">
+              <a class="menu-block__links-list__item" md-button routerLink="about" routerLinkActive="active" href="/" tabindex="0">About</a>
+              <a class="menu-block__links-list__item" md-button  routerLink="blog" href="/blog" tabindex="0">Blog</a>
+              <a class="menu-block__links-list__item" md-button  routerLink="contact" href="/contact" tabindex="0">Contact</a> 
+        </div>
+      </div>
+
+      
 
     </nav>
     

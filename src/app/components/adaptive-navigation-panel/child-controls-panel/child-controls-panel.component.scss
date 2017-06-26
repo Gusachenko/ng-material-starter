@@ -9,10 +9,10 @@
     .logo-block{
         display: block;
         position: relative;
-        width: 30%;
+        width: 10%;
         height: 100%;
 
-        float: right;
+        float: left;
 
 
   
@@ -21,8 +21,8 @@
             height: 90%;
             width: 70px;
             top: 50%;
-            transform: translateY(-50%);
-            right: 0px;
+            left: 50%;
+            transform: translate(-50%, -50%);
 
             &>svg{
 
@@ -132,39 +132,24 @@
             height: 100%;
             float: left;
 
-                ul{
-                position: relative;
-                float: left;
-                list-style: none;
-
-                margin: 0;
-                top: 50%;
+            .menu-block__links-list__item{
+                top:50%;
                 transform: translateY(-50%);
-
-                padding-left: 0px;
-
-
-                    li{
-                        float: left;
-                        margin-left: 5px;
-
-                        box-sizing: content-box;
-
-                        &:hover{
-                           
-                        }
-
-                    }
-
-                }
+                text-transform: uppercase;
+            }
 
         }
-
-
-
-
-        
     }
 
+}
 
+@media screen and (max-width: 768px){
+    .container{
+        .logo-block{
+            float: right;
+        }
+        .menu-block{
+            float: left;
+        }
+    }
 }
