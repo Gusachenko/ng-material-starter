@@ -11,8 +11,9 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
 export class ChildControlsPanelComponent implements OnInit {
 
   public mobileVersion : boolean = false;
+  public mainContentWidthValue : number;
 
-  private mainContentScrollValue: number;
+  private mainWrapperScrollValue: number;
   private subscription: Subscription;
 
   public sideNavOpen(){
@@ -20,11 +21,14 @@ export class ChildControlsPanelComponent implements OnInit {
   }
 
   constructor(private globalStateServiceService: GlobalStateServiceService) {
-    globalStateServiceService.mainContentScrollState.subscribe( scrollValue => {
-          this.mainContentScrollValue = scrollValue;
+    globalStateServiceService.mainWrapperScrollState.subscribe( scrollValue => {
+          this.mainWrapperScrollValue = scrollValue;
     });
     globalStateServiceService.mobileVersionState.subscribe( state => {
         this.mobileVersion = state;
+    });
+    globalStateServiceService.mainContentWidthState.subscribe( elementWidthValue => {
+        this.mainContentWidthValue = elementWidthValue;
     });
     
   }
@@ -37,9 +41,15 @@ export class ChildControlsPanelComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  public getToobarStyles() : any {
+        let styles = {
+            'width':  `${this.mainContentWidthValue}px`
+        };
+        return styles;
+  }
   public setLogoKiwiStyles() : any {
         let styles = {
-            'transform':  'rotateY('+this.mainContentScrollValue * 0.1+'deg)'
+            'transform':  'rotateY('+this.mainWrapperScrollValue * 0.1+'deg)'
         };
         return styles;
     }

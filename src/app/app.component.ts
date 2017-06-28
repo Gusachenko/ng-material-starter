@@ -10,29 +10,30 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   providers: [ GlobalStateServiceService ]
 })
 export class AppComponent {
+  @ViewChild('mainwrapper') m_mainWrapper;
   @ViewChild('maincontent') m_mainContent;
 
   constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2){
     renderer.listen(window, 'resize', (event) => {
-      this.checkWindowWidth();
+      this.checkWindow();
     });
   }
 
   ngAfterViewInit() {
-    this.checkWindowWidth();
+    this.checkWindow();
 
-    this.renderer.listen(this.m_mainContent.nativeElement, 'scroll', (event) => {
-        this.globalStateServiceService.changeMainContentScrollState(event.target.scrollTop);
+    this.renderer.listen(this.m_mainWrapper.nativeElement, 'scroll', (event) => {
+        this.globalStateServiceService.changeMainWrapperScrollState(event.target.scrollTop);
     });
   }
 
-  private checkWindowWidth() : void {
+  private checkWindow() : void {
     if(window.innerWidth > 768){
-      this.globalStateServiceService.changeMobileVersionState(false);
-      
+      this.globalStateServiceService.changeMobileVersionState(false);     
     }else{
       this.globalStateServiceService.changeMobileVersionState(true);
     }
+    this.globalStateServiceService.changeMainContentWidthState(this.m_mainContent.nativeElement.offsetWidth)
   }
 
   title = 'app works!';
