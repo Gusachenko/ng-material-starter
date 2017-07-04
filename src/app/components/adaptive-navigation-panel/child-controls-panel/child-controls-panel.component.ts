@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 import { GlobalStateServiceService } from 'app/services/global-state-service.service';
@@ -9,9 +9,9 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   styleUrls: ['./child-controls-panel.component.scss']
 })
 export class ChildControlsPanelComponent implements OnInit {
+    @HostBinding('style.width.px') hostStyleWidthPx : number;
 
   public mobileVersion : boolean = false;
-  public mainContentWidthValue : number;
 
   private mainWrapperScrollValue: number;
   private subscription: Subscription;
@@ -28,7 +28,7 @@ export class ChildControlsPanelComponent implements OnInit {
         this.mobileVersion = state;
     });
     globalStateServiceService.mainContentWidthState.subscribe( elementWidthValue => {
-        this.mainContentWidthValue = elementWidthValue;
+        this.hostStyleWidthPx = elementWidthValue;
     });
     
   }
@@ -41,12 +41,6 @@ export class ChildControlsPanelComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  public getToobarStyles() : any {
-        let styles = {
-            'width':  `${this.mainContentWidthValue}px`
-        };
-        return styles;
-  }
   public setLogoKiwiStyles() : any {
         let styles = {
             'transform':  'rotateY('+this.mainWrapperScrollValue * 0.1+'deg)'
