@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, AfterViewInit, Input, HostBinding, HostListener, ElementRef } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 import { GlobalStateServiceService } from 'app/services/global-state-service.service';
@@ -8,43 +8,58 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
   templateUrl: './child-controls-panel.component.html',
   styleUrls: ['./child-controls-panel.component.scss']
 })
-export class ChildControlsPanelComponent implements OnInit {
+export class ChildControlsPanelComponent {
     @HostBinding('style.width.px') hostStyleWidthPx : number;
 
-  public mobileVersion : boolean = false;
+    @HostListener('mousewheel', ['$event']) onMousewheel(event: any) {
+        this.globalStateServiceService.changeControlsPanelScrollState(event.wheelDelta);
+    }
 
-  private mainWrapperScrollValue: number;
-  private subscription: Subscription;
+    public mobileVersion : boolean = false;
+    public hostStyleHeightPx : number;
 
-  public sideNavOpen(){
-    this.globalStateServiceService.changeSideNavState(true);
-  }
+    private mainWrapperScrollValue: number;
+    private subscription: Subscription;
 
-  constructor(private globalStateServiceService: GlobalStateServiceService) {
-    globalStateServiceService.mainWrapperScrollState.subscribe( scrollValue => {
-          this.mainWrapperScrollValue = scrollValue;
-    });
-    globalStateServiceService.mobileVersionState.subscribe( state => {
-        this.mobileVersion = state;
-    });
-    globalStateServiceService.mainContentWidthState.subscribe( elementWidthValue => {
-        this.hostStyleWidthPx = elementWidthValue;
-    });
-    
-  }
 
-  ngOnInit() {
-  }
+    private calculateHostHeight() : void{
+        this.hostStyleHeightPx = this.elementRef.nativeElement.offsetHeight;
+        this.globalStateServiceService.changeChildControlsPanelElementHeightState(this.hostStyleHeightPx);
+    }
 
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    this.subscription.unsubscribe();
-  }
+    public sideNavOpen(): void{
+        this.globalStateServiceService.changeSideNavState(true);
+    }
 
-  public setLogoKiwiStyles() : any {
+    public setLogoKiwiStyles() : any {
         let styles = {
             'transform':  'rotateY('+this.mainWrapperScrollValue * 0.1+'deg)'
         };
         return styles;
     }
+
+
+    constructor(private globalStateServiceService: GlobalStateServiceService, private elementRef: ElementRef) {
+        globalStateServiceService.mainWrapperScrollState.subscribe( scrollValue => {
+                this.mainWrapperScrollValue = scrollValue;
+                this.calculateHostHeight();
+        });
+        globalStateServiceService.mobileVersionState.subscribe( state => {
+            this.mobileVersion = state;
+        });
+        globalStateServiceService.mainContentWidthState.subscribe( elementWidthValue => {
+            this.hostStyleWidthPx = elementWidthValue;
+        });
+    }
+
+    ngAfterViewInit() {
+        this.calculateHostHeight();
+    }
+
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
+
+
 }

@@ -14,6 +14,13 @@ export class AppComponent {
   @ViewChild('maincontent') m_mainContent;
 
   constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2){
+    this.globalStateServiceService.childControlsPanelElementHeightState.subscribe( elementHeight => {
+      this.m_mainContent.nativeElement.style.marginTop = `${elementHeight}px`;
+    });
+    this.globalStateServiceService.controlsPanelScrollState.subscribe( scrollValue => {
+      scrollValue = -scrollValue;
+      this.m_mainWrapper.nativeElement.scrollTop = this.m_mainWrapper.nativeElement.scrollTop + scrollValue;
+    });
     renderer.listen(window, 'resize', (event) => {
       this.checkWindow();
     });
@@ -21,7 +28,6 @@ export class AppComponent {
 
   ngAfterViewInit() {
     this.checkWindow();
-
     this.renderer.listen(this.m_mainWrapper.nativeElement, 'scroll', (event) => {
         this.globalStateServiceService.changeMainWrapperScrollState(event.target.scrollTop);
     });
