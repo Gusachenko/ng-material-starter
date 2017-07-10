@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChildControlsPanelComponent } from './child-controls-panel.component';
+import { NavigationPanelComponent } from './navigation-panel.component';
 
-describe('ChildControlsPanelComponent', () => {
-  let component: ChildControlsPanelComponent;
-  let fixture: ComponentFixture<ChildControlsPanelComponent>;
+describe('NavigationPanelComponent', () => {
+  let component: NavigationPanelComponent;
+  let fixture: ComponentFixture<NavigationPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChildControlsPanelComponent ]
+      declarations: [ NavigationPanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChildControlsPanelComponent);
+    fixture = TestBed.createComponent(NavigationPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,17 +4,108 @@
     bottom: 0;
     left: 0;
     right: 0;
+       
+    padding-top: 64px;
 }
 
-.main-wrapper{
-    height: 100%;
-    overflow-y: auto;
+header{
+    background: orange;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    left: 0;
+    right: 0;
+    top: 0px;
+    z-index: 1;
+    position: fixed;
+
+    height: 64px;
+}
+
+
+#side-nav{
+    border-right: 1px solid rgba(0,0,0,.14);
+    bottom: 0;
+    background: #fff;
+    color: #212121;
+    display: block;
+    font-family: Roboto,sans-serif;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 256px;
+    z-index: 4;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+    transition-delay: .1s;
+    transition-duration: .2s;
+    transition-property: transform,left;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+
     
-    .main-wrapper__content{
-        height: 1800px;
-        margin-top: 64px;   //md-toolbar min-height: 64px
-        border-left: 3px dashed orange;
-        border-bottom: 1px solid green;
+
+    visibility: hidden;
+    transform: translateX(0);
+
+
+    transform: translateX(-241px);
+
+    &.side-nav_open{
+        transform: translateX(0);
     }
 
+    &.side-nav_visible {
+        visibility: visible;
+    }
+
+}
+
+
+
+
+#grid-cont{
+    background: lightcyan;
+    height: 900px;
+
+    float: left;
+    // height: 100%;
+    width: 100%;
+    padding-bottom: 100px;
+    transition: padding-left .2s cubic-bezier(.4,0,.2,1);
+    box-sizing: border-box;
+}
+
+footer{
+    background: brown;
+
+    box-sizing: border-box;
+    clear: left;
+    height: 96px;
+    padding-left: 256px;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    transition: padding-left .2s cubic-bezier(.4,0,.2,1);
+
+    padding-left: 0px;
+}
+
+
+.mask-modal{
+    background-color: rgba(0,0,0,.5);
+    height: 100%;
+    left: 0;
+    opacity: .1;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+    transform: translateZ(0);
+
+    &.mask-modal_visible {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0;
+    }
 }

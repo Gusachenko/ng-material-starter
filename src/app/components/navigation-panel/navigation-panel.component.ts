@@ -1,22 +1,21 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 import { GlobalStateServiceService } from 'app/services/global-state-service.service';
 
 @Component({
-  selector: 'app-child-controls-panel',
-  templateUrl: './child-controls-panel.component.html',
-  styleUrls: ['./child-controls-panel.component.scss']
+  selector: 'app-navigation-panel',
+  templateUrl: './navigation-panel.component.html',
+  styleUrls: ['./navigation-panel.component.scss']
 })
-export class ChildControlsPanelComponent implements OnInit {
-    @HostBinding('style.width.px') hostStyleWidthPx : number;
+export class NavigationPanelComponent implements OnInit {
 
   public mobileVersion : boolean = false;
 
   private mainWrapperScrollValue: number;
   private subscription: Subscription;
 
-  public sideNavOpen(){
+  public sideNav_open(){
     this.globalStateServiceService.changeSideNavState(true);
   }
 
@@ -27,10 +26,6 @@ export class ChildControlsPanelComponent implements OnInit {
     globalStateServiceService.mobileVersionState.subscribe( state => {
         this.mobileVersion = state;
     });
-    globalStateServiceService.mainContentWidthState.subscribe( elementWidthValue => {
-        this.hostStyleWidthPx = elementWidthValue;
-    });
-    
   }
 
   ngOnInit() {
@@ -47,4 +42,5 @@ export class ChildControlsPanelComponent implements OnInit {
         };
         return styles;
     }
+
 }

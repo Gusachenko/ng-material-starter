@@ -8,8 +8,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { AdaptiveNavigationPanelComponent } from './components/adaptive-navigation-panel/adaptive-navigation-panel.component';
-import { ChildControlsPanelComponent } from './components/adaptive-navigation-panel/child-controls-panel/child-controls-panel.component';
 
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 
@@ -17,16 +15,16 @@ import { PageAboutComponent } from './components/routes/page-about/page-about.co
 import { PageBlogComponent } from './components/routes/page-blog/page-blog.component';
 import { PageContactComponent } from './components/routes/page-contact/page-contact.component';
 import { PageNotFoundComponent } from './components/routes/page-not-found/page-not-found.component';
+import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdaptiveNavigationPanelComponent,
-    ChildControlsPanelComponent,
     PageAboutComponent,
     PageBlogComponent,
     PageContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavigationPanelComponent
   ],
   imports: [
     BrowserModule,

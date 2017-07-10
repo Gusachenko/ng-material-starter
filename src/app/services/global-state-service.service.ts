@@ -7,12 +7,10 @@ export class GlobalStateServiceService {
   private sideNavOpenSource = new Subject<boolean>();
   private mobileVersionSource = new Subject<boolean>();
   private mainWrapperScrollSource = new Subject<number>();
-  private mainContentWidthSource = new Subject<number>();
 
   public sideNavState = this.sideNavOpenSource.asObservable();
   public mobileVersionState = this.mobileVersionSource.asObservable();
   public mainWrapperScrollState = this.mainWrapperScrollSource.asObservable();
-  public mainContentWidthState = this.mainContentWidthSource.asObservable();
   
   public changeSideNavState(state: boolean){
       this.sideNavOpenSource.next(state);
@@ -22,9 +20,6 @@ export class GlobalStateServiceService {
   }
   public changeMainWrapperScrollState(scrollValue: number){
       this.mainWrapperScrollSource.next(scrollValue);
-  }
-  public changeMainContentWidthState(elementWidth: number){
-      this.mainContentWidthSource.next(elementWidth);
   }
   
   constructor() {}

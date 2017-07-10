@@ -1,16 +1,30 @@
-<app-adaptive-navigation-panel>
-  <div #mainwrapper class="main-wrapper" role="main">
-
-    <div #maincontent class="main-wrapper__content">
-      <h1>
-        {{title}}
-      </h1>
+<header>
+   <app-navigation-panel></app-navigation-panel>
+</header>
 
 
-
-      <router-outlet></router-outlet>
-
-    </div>
-
+<div id="side-nav" #sidenav>
+  <div class="side-nav-wrapper">
+    SIDENAV
   </div>
-</app-adaptive-navigation-panel>
+</div>
+
+
+
+<div id="grid-cont">
+  <div class="grid-cont-wrapper">
+    <h3>GRID-CONT</h3>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="footer-wrapper">
+    <h5>FOOTER</h5>
+  </div>
+</footer>
+
+
+
+<div class="mask-modal" #maskmodal (click)="sideNav_close()"></div>
