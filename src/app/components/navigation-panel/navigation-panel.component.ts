@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
-import { GlobalStateServiceService } from 'app/services/global-state-service.service';
+import { GlobalStateServiceService, NavigationItem } from 'app/services/global-state-service.service';
 
 @Component({
   selector: 'app-navigation-panel',
@@ -11,15 +11,15 @@ import { GlobalStateServiceService } from 'app/services/global-state-service.ser
 export class NavigationPanelComponent implements OnInit {
 
   public mobileVersion : boolean = false;
+  public navigationItems : NavigationItem[];
 
   private mainWrapperScrollValue: number;
   private subscription: Subscription;
 
-  public sideNav_open(){
-    this.globalStateServiceService.changeSideNavState(true);
-  }
-
   constructor(private globalStateServiceService: GlobalStateServiceService) {
+
+    this.navigationItems = globalStateServiceService.navigationItems;
+     
     globalStateServiceService.mainWrapperScrollState.subscribe( scrollValue => {
           this.mainWrapperScrollValue = scrollValue;
     });
@@ -36,11 +36,19 @@ export class NavigationPanelComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  public sideNav_open(){
+    this.globalStateServiceService.changeSideNavState(true);
+  }
+
   public setLogoKiwiStyles() : any {
         let styles = {
             'transform':  'rotateY('+this.mainWrapperScrollValue * 0.1+'deg)'
         };
         return styles;
-    }
+  }
+
+  public avtiveNavItem(itemIndex: number) : void {
+      this.globalStateServiceService.navigationItemActive = itemIndex;
+  }
 
 }

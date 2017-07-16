@@ -52,9 +52,19 @@
         </div>
 
         <div *ngIf="!mobileVersion" class="menu-block__links-list">
-              <a class="menu-block__links-list__item" md-button routerLink="about" routerLinkActive="active" href="/" tabindex="0">About</a>
-              <a class="menu-block__links-list__item" md-button  routerLink="blog" href="/blog" tabindex="0">Blog</a>
-              <a class="menu-block__links-list__item" md-button  routerLink="contact" href="/contact" tabindex="0">Contact</a> 
+
+              <a *ngFor="let navigationItem of navigationItems; let i=index;" 
+                  class="menu-block__links-list__item"
+                  href="{{ '/' + navigationItem.name}}" 
+                  tabindex="0"
+                  role="button" 
+                  md-button 
+                  routerLink="{{navigationItem.name}}" 
+                  routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
+                  (click)="avtiveNavItem(i)"
+                  >
+                  {{navigationItem.name}}
+              </a>
         </div>
       </div>
 
