@@ -3,8 +3,8 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~normalize.css/normalize.css";
 
-@import url(~material-design-icons/iconfont/material-icons.css);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~roboto-fontface/css/roboto/roboto-fontface.css";
 
 html, body {
   font-family: Roboto, Arial, sans-serif;

@@ -1,5 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Subscription }   from 'rxjs/Subscription';
+import { Component, AfterViewInit, HostBinding, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 import { GlobalStateServiceService, NavigationItem } from 'app/services/global-state-service.service';
 
@@ -8,27 +8,27 @@ import { GlobalStateServiceService, NavigationItem } from 'app/services/global-s
   templateUrl: './navigation-panel.component.html',
   styleUrls: ['./navigation-panel.component.scss']
 })
-export class NavigationPanelComponent implements OnInit {
+export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
 
-  public mobileVersion : boolean = false;
-  public navigationItems : NavigationItem[];
+  public mobileVersion = false;
 
+  private navigationItems: NavigationItem[];
   private mainWrapperScrollValue: number;
   private subscription: Subscription;
 
   constructor(private globalStateServiceService: GlobalStateServiceService) {
 
     this.navigationItems = globalStateServiceService.navigationItems;
-     
-    globalStateServiceService.mainWrapperScrollState.subscribe( scrollValue => {
-          this.mainWrapperScrollValue = scrollValue;
-    });
-    globalStateServiceService.mobileVersionState.subscribe( state => {
-        this.mobileVersion = state;
+
+    globalStateServiceService.mainWrapperScrollState.subscribe(scrollValue => {
+      this.mainWrapperScrollValue = scrollValue;
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.globalStateServiceService.mobileVersionState.subscribe(state => {
+      this.mobileVersion = state;
+    });
   }
 
   ngOnDestroy() {
@@ -36,19 +36,19 @@ export class NavigationPanelComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  public sideNav_open(){
+  public sideNav_open() {
     this.globalStateServiceService.changeSideNavState(true);
   }
 
-  public setLogoKiwiStyles() : any {
-        let styles = {
-            'transform':  'rotateY('+this.mainWrapperScrollValue * 0.1+'deg)'
-        };
-        return styles;
+  public setLogoKiwiStyles(): any {
+    const styles = {
+      'transform': 'rotateY(' + this.mainWrapperScrollValue * 0.1 + 'deg)'
+    };
+    return styles;
   }
 
-  public avtiveNavItem(itemIndex: number) : void {
-      this.globalStateServiceService.navigationItemActive = itemIndex;
+  public avtiveNavItem(itemIndex: number): void {
+    this.globalStateServiceService.navigationItemActive = itemIndex;
   }
 
 }

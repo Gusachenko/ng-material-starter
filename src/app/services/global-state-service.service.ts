@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class GlobalStateServiceService {
@@ -17,24 +17,24 @@ export class GlobalStateServiceService {
     public sideNavState = this.sideNavOpenSource.asObservable();
     public mobileVersionState = this.mobileVersionSource.asObservable();
     public mainWrapperScrollState = this.mainWrapperScrollSource.asObservable();
-  
-    constructor() {}
 
-    public changeSideNavState(state: boolean){
+    constructor() { }
+
+    public changeSideNavState(state: boolean) {
         this.sideNavOpenSource.next(state);
     }
-    public changeMobileVersionState(state: boolean){
+    public changeMobileVersionState(state: boolean) {
         this.mobileVersionSource.next(state);
     }
-    public changeMainWrapperScrollState(scrollValue: number){
+    public changeMainWrapperScrollState(scrollValue: number) {
         this.mainWrapperScrollSource.next(scrollValue);
     }
 
-    set navigationItemActive(itemIndex: number){
-        for(let i = 0; i < this.NAVIGATION_ITEMS.length; i++){
-            if(i === itemIndex){
+    set navigationItemActive(itemIndex: number) {
+        for (let i = 0; i < this.NAVIGATION_ITEMS.length; i++) {
+            if (i === itemIndex) {
                 this.NAVIGATION_ITEMS[i].isActive = true;
-            }else{
+            } else {
                 this.NAVIGATION_ITEMS[i].isActive = false;
             }
         }
@@ -46,10 +46,17 @@ export class GlobalStateServiceService {
 }
 
 export class NavigationItem {
-    name: string;
-    isActive: boolean = false;
-    constructor(name: string, isActive: boolean){
+    public name: string;
+    public isActive = false;
+    public type: 'item' | 'dropdown' = 'item';
+    public navigation_items: NavigationItem[];
+    constructor(name: string,
+        isActive: boolean,
+        type: 'item' | 'dropdown' = 'item',
+        navigation_items: NavigationItem[] = []) {
         this.name = name;
         this.isActive = isActive;
+        this.type = type;
+        this.navigation_items = navigation_items;
     }
 }
