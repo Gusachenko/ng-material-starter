@@ -6,7 +6,12 @@ export class GlobalStateServiceService {
 
     private NAVIGATION_ITEMS: NavigationItem[] = [
         new NavigationItem('about', true),
-        new NavigationItem('blog', false),
+        new NavigationItem('blog', false, "dropdown", [
+            new NavigationItem('about1', false),
+            new NavigationItem('about2', false),
+            new NavigationItem('about3', false),
+            new NavigationItem('about4', false),
+        ]),
         new NavigationItem('contact', false)
     ];
 

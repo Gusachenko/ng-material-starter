@@ -19,7 +19,7 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
   constructor(private globalStateServiceService: GlobalStateServiceService) {
 
     this.navigationItems = globalStateServiceService.navigationItems;
-
+    
     globalStateServiceService.mainWrapperScrollState.subscribe(scrollValue => {
       this.mainWrapperScrollValue = scrollValue;
     });
