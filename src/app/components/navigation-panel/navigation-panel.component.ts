@@ -47,7 +47,7 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
     return styles;
   }
 
-  public avtiveNavItem(itemIndex: number): void {
+  public avtiveNavItem(itemIndex: number[]): void {
     this.globalStateServiceService.navigationItemActive = itemIndex;
   }
 

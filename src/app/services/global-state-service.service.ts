@@ -5,14 +5,12 @@ import { Subject } from 'rxjs/Subject';
 export class GlobalStateServiceService {
 
     private NAVIGATION_ITEMS: NavigationItem[] = [
-        new NavigationItem('about', true),
-        new NavigationItem('blog', false, "dropdown", [
-            new NavigationItem('about1', false),
-            new NavigationItem('about2', false),
-            new NavigationItem('about3', false),
-            new NavigationItem('about4', false),
+        new NavigationItem('about', 'about', true),
+        new NavigationItem('products', 'products', false, "dropdown", [
+            new NavigationItem('product1', 'product1', false),
+            new NavigationItem('product2', 'Продукт 2', false),
         ]),
-        new NavigationItem('contact', false)
+        new NavigationItem('contact', 'contact', false)
     ];
 
     private sideNavOpenSource = new Subject<boolean>();
@@ -35,12 +33,33 @@ export class GlobalStateServiceService {
         this.mainWrapperScrollSource.next(scrollValue);
     }
 
-    set navigationItemActive(itemIndex: number) {
+    set navigationItemActive(itemIndex: number[]) {
         for (let i = 0; i < this.NAVIGATION_ITEMS.length; i++) {
-            if (i === itemIndex) {
-                this.NAVIGATION_ITEMS[i].isActive = true;
+
+            if (this.NAVIGATION_ITEMS[i].navigation_items.length > 0) {
+                for (let index = 0; index < this.NAVIGATION_ITEMS[i].navigation_items.length; index++) {
+                    this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
+                }
+                this.NAVIGATION_ITEMS[i].isActive = false;
             } else {
                 this.NAVIGATION_ITEMS[i].isActive = false;
+            }
+
+        }
+        for (let i = 0; i < this.NAVIGATION_ITEMS.length; i++) {
+            if (i === itemIndex[0]) {
+                if (itemIndex.length > 1) {
+                    for (let index = 0; index < this.NAVIGATION_ITEMS[i].navigation_items.length; index++) {
+                        if (index === itemIndex[1]) {
+                            this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = true;
+                        } else {
+                            this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
+                        }
+                    }
+                } else {
+                    this.NAVIGATION_ITEMS[i].isActive = true;
+                }
+
             }
         }
     }
@@ -51,15 +70,17 @@ export class GlobalStateServiceService {
 }
 
 export class NavigationItem {
+    public id: string;
     public name: string;
     public isActive = false;
     public type: 'item' | 'dropdown' = 'item';
     public navigation_items: NavigationItem[];
-    constructor(name: string,
+    constructor(id: string, name: string,
         isActive: boolean,
         type: 'item' | 'dropdown' = 'item',
         navigation_items: NavigationItem[] = []) {
-        this.name = name;
+        this.id = id;
+        this.name = name ? name : this.id;
         this.isActive = isActive;
         this.type = type;
         this.navigation_items = navigation_items;

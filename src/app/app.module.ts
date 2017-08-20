@@ -12,19 +12,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 
 import { PageAboutComponent } from './components/routes/page-about/page-about.component';
-import { PageBlogComponent } from './components/routes/page-blog/page-blog.component';
 import { PageContactComponent } from './components/routes/page-contact/page-contact.component';
 import { PageNotFoundComponent } from './components/routes/page-not-found/page-not-found.component';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
+import { PageProduct1Component } from './components/routes/products/page-product1/page-product1.component';
+import { PageProduct2Component } from './components/routes/products/page-product2/page-product2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageAboutComponent,
-    PageBlogComponent,
     PageContactComponent,
     PageNotFoundComponent,
-    NavigationPanelComponent
+    NavigationPanelComponent,
+    PageProduct1Component,
+    PageProduct2Component
   ],
   imports: [
     BrowserModule,
