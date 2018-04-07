@@ -14,17 +14,17 @@
     </div>
     
 
-    <md-divider></md-divider>
+    <mat-divider></mat-divider>
 
 
     <nav>
       
-      <md-list>
+      <mat-list>
 
         <ng-container *ngFor="let navigationItem of navigationItems; let i=index;">
 
           <ng-container  *ngIf="navigationItem.type == 'item'; else dropdownBlock">
-            <md-list-item class="side-nav__links-list__item"
+            <mat-list-item class="side-nav__links-list__item"
               title="{{navigationItem.name}}"
               [ngClass]="navigationItem.isActive ? 'active' : ''"
               routerLink="{{navigationItem.id}}"
@@ -33,29 +33,29 @@
               (keyup.enter)="avtiveNavItem([i])"
             >                      
                 
-                <span md-line>{{navigationItem.name}}</span>
+                <span mat-line>{{navigationItem.name}}</span>
 
-            </md-list-item>
+            </mat-list-item>
           </ng-container>
 
 
 
           <ng-template #dropdownBlock>
 
-            <md-list-item #nestedTitle class="side-nav__nested-list-title side-nav__nested-list-title_expanded"
+            <mat-list-item #nestedTitle class="side-nav__nested-list-title side-nav__nested-list-title_expanded"
                   tabindex="0" role="tab" aria-expanded="false"
                   title="{{navigationItem.name}}"
                   (click)="toggleNestedNavItem($event, nestedList)"
                   (keyup.enter)="toggleNestedNavItem($event, nestedList)"
             >
             
-              <span md-line>{{navigationItem.name}}</span>
-              <md-icon class="nested-title__arrow">keyboard_arrow_right</md-icon>
-            </md-list-item>
+              <span mat-line>{{navigationItem.name}}</span>
+              <mat-icon class="nested-title__arrow">keyboard_arrow_right</mat-icon>
+            </mat-list-item>
 
             <div #nestedList class="side-nav__nested-list-items" aria-expanded="false">
-              <md-list>
-                  <md-list-item *ngFor="let nestedNavigationItem of navigationItem.navigation_items; let j=index;"
+              <mat-list>
+                  <mat-list-item *ngFor="let nestedNavigationItem of navigationItem.navigation_items; let j=index;"
                       class="side-nav__links-list__item"
                       title="{{nestedNavigationItem.name}}"                   
                       [ngClass]="nestedNavigationItem.isActive ? 'active' : ''"
@@ -65,10 +65,10 @@
                       (keyup.enter)="avtiveNavItem([i,j], $event)"
                     >
 
-                        <span md-line>{{nestedNavigationItem.name}}</span>
+                        <span mat-line>{{nestedNavigationItem.name}}</span>
 
-                  </md-list-item>
-              </md-list>
+                  </mat-list-item>
+              </mat-list>
             </div>
 
 
@@ -82,7 +82,7 @@
 
 
 
-      </md-list>
+      </mat-list>
 
 
     </nav>

@@ -64,18 +64,16 @@ export class AppComponent implements AfterViewInit {
 
   public toggleNestedNavItem(_event: any, _nestedList: any): void {
     const currentTarget = _event.currentTarget;
-    if (currentTarget.getAttribute('aria-expanded') === "true"){
-      currentTarget.classList.remove("expanded");
+    if (currentTarget.getAttribute('aria-expanded') === 'true') {
+      currentTarget.classList.remove('expanded');
       currentTarget.setAttribute('aria-expanded', 'false');
-      _nestedList.classList.remove("expanded");
+      _nestedList.classList.remove('expanded');
       _nestedList.setAttribute('aria-expanded', 'false');
-    }else{
-      currentTarget.classList.add("expanded");
+    } else {
+      currentTarget.classList.add('expanded');
       currentTarget.setAttribute('aria-expanded', 'true');
-      _nestedList.classList.add("expanded");
+      _nestedList.classList.add('expanded');
       _nestedList.setAttribute('aria-expanded', 'true');
     }
-
   }
-
 }
