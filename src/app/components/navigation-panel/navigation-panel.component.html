@@ -54,14 +54,13 @@
         <div *ngIf="!mobileVersion" class="menu-block__links-list">
 
               <a *ngFor="let navigationItem of navigationItems; let i=index;" 
-                  class="menu-block__links-list__item"
-                  href="{{ '/' + navigationItem.name}}" 
-                  tabindex="0"
-                  role="button" 
-                  mat-button 
                   routerLink="{{navigationItem.name}}" 
                   routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
                   (click)="avtiveNavItem(i)"
+                  class="menu-block__links-list__item"
+                  href="{{ '/' + navigationItem.name}}"
+                  role="button" 
+                  mat-button 
                   >
                   {{navigationItem.name}}
               </a>

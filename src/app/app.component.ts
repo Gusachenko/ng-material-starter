@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, Renderer2 } from '@angular/core';
 
-import { GlobalStateServiceService, NavigationItem } from './services/global-state-service.service';
+import { GlobalStateServiceService } from './services/global-state-service.service';
+import { NavigationItem } from './classes/navigation-item';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,11 @@ import { GlobalStateServiceService, NavigationItem } from './services/global-sta
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild('sidenav') vc_sideNav;
-  @ViewChild('maskmodal') vc_maskModal;
 
-  public navigationItems: NavigationItem[];
+  maskModalVisible = false;
+  navigationItems: NavigationItem[];
 
   constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2) {
-    renderer.listen(window, 'resize', event => {
-      this.checkWindow();
-    });
-
     this.navigationItems = globalStateServiceService.navigationItems;
 
     globalStateServiceService.maskModalState.subscribe(state => {
@@ -27,6 +24,10 @@ export class AppComponent implements AfterViewInit {
       } else {
         this.maskModalClose();
       }
+    });
+
+    renderer.listen(window, 'resize', event => {
+      this.checkWindow();
     });
   }
 
@@ -47,15 +48,14 @@ export class AppComponent implements AfterViewInit {
 
   maskModalOpen(): void {
     document.body.classList.add('disable-scroll');
-    this.vc_maskModal.nativeElement.classList.add('mask-modal_visible');
+    this.maskModalVisible = true;
   }
 
   maskModalClose(): void {
     this.vc_sideNav.close();
     setTimeout(() => {
       this.vc_sideNav.visible = false;
-
-      this.vc_maskModal.nativeElement.classList.remove('mask-modal_visible');
+      this.maskModalVisible = false;
       document.body.classList.remove('disable-scroll');
     }, 300);
   }

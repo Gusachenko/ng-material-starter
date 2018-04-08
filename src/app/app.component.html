@@ -2,12 +2,11 @@
   <app-navigation-panel></app-navigation-panel>
 </header>
 
-
 <app-navigation-side-nav #sidenav></app-navigation-side-nav>
 
 <div id="grid-cont" role="main">
   <div class="grid-cont-wrapper">
-    <h3>GRID-CONT</h3>
+    <h3>Routing pages</h3>
     <router-outlet></router-outlet>
   </div>
 </div>
@@ -18,4 +17,4 @@
   </div>
 </footer>
 
-<div class="qp-ui-mask-modal" #maskmodal (click)="maskModalClose()"></div>
+<div class="qp-ui-mask-modal" [class.mask-modal_visible]="maskModalVisible" (click)="maskModalClose()"></div>
