@@ -2,6 +2,7 @@
 
     <nav class="container" role="navigation">
 
+
       <div class="logo-block">
         <a href="/">
           <!--<img src="assets/icons/logo.svg" alt="logo"/>-->
@@ -41,7 +42,10 @@
         </a>
       </div>
 
+
       <div class="menu-block">
+
+
         <div *ngIf="mobileVersion" class="menu-block__mobile">
           <button mat-fab (click)="sideNav_open()" class="menu-block__mobile__sidenav-button">
             <mat-icon>menu</mat-icon>
@@ -51,10 +55,14 @@
           </span>
         </div>
 
-        <div *ngIf="!mobileVersion" class="menu-block__links-list">
 
-              <a *ngFor="let navigationItem of navigationItems; let i=index;" 
-                  routerLink="{{navigationItem.name}}" 
+
+        <div *ngIf="!mobileVersion" class="menu-block__links-list">
+          <ng-container *ngFor="let navigationItem of navigationItems; let i=index;" >
+            
+            
+            <ng-container *ngIf="navigationItem.type == 'item'; else dropDownBlock">
+                <a routerLink="{{navigationItem.name}}" 
                   routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
                   (click)="avtiveNavItem(i)"
                   class="menu-block__links-list__item"
@@ -63,15 +71,40 @@
                   mat-button 
                   >
                   {{navigationItem.name}}
-              </a>
+                </a>
+            </ng-container>
+
+
+            <ng-template #dropDownBlock>          
+                <a mat-button #matMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu"
+                  (keyup.enter)="matMenuTrigger.openMenu()"
+                  class="menu-block__links-list__item" 
+                  role="button">
+                  {{navigationItem.name}}
+                </a>
+     
+                <mat-menu #menu="matMenu">
+                  <a *ngFor="let nestedItem of navigationItem.navigation_items; let j = index"
+                    routerLink="{{nestedItem.id}}" 
+                    routerLinkActive="{{nestedItem.isActive ? 'active' : '' }}"
+                    (click)="avtiveNavItem([i,j], $event)"
+                    href="{{ '/' + nestedItem.id}}"
+                    role="button" 
+                    mat-menu-item
+                    >
+                    {{nestedItem.name}}
+                  </a>
+                </mat-menu>
+            </ng-template>
+           
+
+          </ng-container>
         </div>
+
+
       </div>
 
-      
 
     </nav>
-    
-
-
-
+ 
 </mat-toolbar>
