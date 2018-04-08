@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, HostBinding, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { GlobalStateServiceService, NavigationItem } from 'app/services/global-state-service.service';
+import { GlobalStateServiceService, NavigationItem } from '../../services/global-state-service.service';
 
 @Component({
   selector: 'app-navigation-panel',

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, Renderer2 } from '@angular/core';
 
-import { GlobalStateServiceService, NavigationItem } from 'app/services/global-state-service.service';
+import { GlobalStateServiceService, NavigationItem } from './services/global-state-service.service';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { GlobalStateServiceService, NavigationItem } from 'app/services/global-state-service.service';
+import { GlobalStateServiceService, NavigationItem } from '../../services/global-state-service.service';
 
 @Component({
   selector: 'app-navigation-side-nav',
