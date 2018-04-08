@@ -9,7 +9,6 @@ import { GlobalStateServiceService, NavigationItem } from 'app/services/global-s
   styleUrls: ['./navigation-panel.component.scss']
 })
 export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
-
   public mobileVersion = false;
 
   private navigationItems: NavigationItem[];
@@ -17,9 +16,8 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private globalStateServiceService: GlobalStateServiceService) {
-
     this.navigationItems = globalStateServiceService.navigationItems;
-    
+
     globalStateServiceService.mainWrapperScrollState.subscribe(scrollValue => {
       this.mainWrapperScrollValue = scrollValue;
     });
@@ -37,12 +35,13 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
   }
 
   public sideNav_open() {
+    this.globalStateServiceService.changeMaskModalState(true);
     this.globalStateServiceService.changeSideNavState(true);
   }
 
   public setLogoKiwiStyles(): any {
     const styles = {
-      'transform': 'rotateY(' + this.mainWrapperScrollValue * 0.1 + 'deg)'
+      transform: 'rotateY(' + this.mainWrapperScrollValue * 0.1 + 'deg)'
     };
     return styles;
   }
@@ -50,5 +49,4 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
   public avtiveNavItem(itemIndex: number[]): void {
     this.globalStateServiceService.navigationItemActive = itemIndex;
   }
-
 }

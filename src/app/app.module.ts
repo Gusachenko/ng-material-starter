@@ -51,6 +51,7 @@ import { PageNotFoundComponent } from './components/routes/page-not-found/page-n
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { PageProduct1Component } from './components/routes/products/page-product1/page-product1.component';
 import { PageProduct2Component } from './components/routes/products/page-product2/page-product2.component';
+import { NavigationSideNavComponent } from './components/navigation-side-nav/navigation-side-nav.component';
 
 @NgModule({
   exports: [
@@ -98,7 +99,8 @@ export class CommonMaterialModule {}
     PageNotFoundComponent,
     NavigationPanelComponent,
     PageProduct1Component,
-    PageProduct2Component
+    PageProduct2Component,
+    NavigationSideNavComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, FormsModule, HttpModule, CommonMaterialModule, AppRoutingModule],
   providers: [],
