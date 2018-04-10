@@ -8,6 +8,7 @@ Provides fast start for the Angular project with [Material Design](https://mater
 - Included Material Icons, Roboto Fonts
 - Material animations
 - Nested menu navigation
+- Top fixed header
 - Responsive design for:
     + mobile < 768px
     + desktop > 768px
