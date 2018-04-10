@@ -47,23 +47,23 @@ export class NavigationSideNavComponent {
   }
 
   //TODO Fix routing on `Enter` event
-  public avtiveNavItem(_itemIndex: number[], _event: any): void {
+  public avtiveNavItem(itemIndex: number[], event: any): void {
     this.globalStateServiceService.changeMaskModalState(false);
-    this.globalStateServiceService.navigationItemActive = _itemIndex;
+    this.globalStateServiceService.navigationItemActive = itemIndex;
   }
 
-  public toggleNestedNavItem(_event: any, _nestedList: any): void {
-    const currentTarget = _event.currentTarget;
+  public toggleNestedNavItem(event: any, nestedList: HTMLDivElement): void {
+    const currentTarget = event.currentTarget;
     if (currentTarget.getAttribute('aria-expanded') === 'true') {
       currentTarget.classList.remove('expanded');
       currentTarget.setAttribute('aria-expanded', 'false');
-      _nestedList.classList.remove('expanded');
-      _nestedList.setAttribute('aria-expanded', 'false');
+      nestedList.classList.remove('expanded');
+      nestedList.setAttribute('aria-expanded', 'false');
     } else {
       currentTarget.classList.add('expanded');
       currentTarget.setAttribute('aria-expanded', 'true');
-      _nestedList.classList.add('expanded');
-      _nestedList.setAttribute('aria-expanded', 'true');
+      nestedList.classList.add('expanded');
+      nestedList.setAttribute('aria-expanded', 'true');
     }
   }
 }

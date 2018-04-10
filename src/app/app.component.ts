@@ -53,6 +53,9 @@ export class AppComponent implements AfterViewInit {
 
   maskModalClose(): void {
     this.vc_sideNav.close();
+    
+    //Timeout needed to correct hide Sidenav/Mask after transition animation end
+    //To do: remove timeout
     setTimeout(() => {
       this.vc_sideNav.visible = false;
       this.maskModalVisible = false;

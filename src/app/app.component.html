@@ -1,20 +1,22 @@
-<header>
-  <app-navigation-panel></app-navigation-panel>
-</header>
+<mat-sidenav-container class="mat-app-background">
+  <header>
+    <app-navigation-panel></app-navigation-panel>
+  </header>
 
-<app-navigation-side-nav #sidenav></app-navigation-side-nav>
+  <app-navigation-side-nav #sidenav></app-navigation-side-nav>
 
-<div id="grid-cont" role="main">
-  <div class="grid-cont-wrapper">
-    <h3>Routing pages</h3>
-    <router-outlet></router-outlet>
+  <div id="grid-cont" role="main">
+    <div class="grid-cont-wrapper">
+      <h3>Routing pages</h3>
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
 
-<footer>
-  <div class="footer-wrapper">
-    <h5>FOOTER</h5>
-  </div>
-</footer>
+  <footer class="mat-primary">
+    <div class="footer-wrapper">
+      <h5>FOOTER</h5>
+    </div>
+  </footer>
 
-<div class="qp-ui-mask-modal" [class.mask-modal_visible]="maskModalVisible" (click)="maskModalClose()"></div>
+  <div class="qp-ui-mask-modal" [class.mask-modal_visible]="maskModalVisible" (click)="maskModalClose()"></div>
+</mat-sidenav-container>
