@@ -13,12 +13,13 @@ export class GlobalStateServiceService {
     ]),
     new NavigationItem('contact', 'contact', false)
   ];
-
+  
   private sideNavOpenSource = new Subject<boolean>();
   private maskModalSource = new Subject<boolean>();
   private mobileVersionSource = new Subject<boolean>();
   private mainWrapperScrollSource = new Subject<number>();
 
+  public currentNavigationItem: NavigationItem;
   public sideNavState = this.sideNavOpenSource.asObservable();
   public maskModalState = this.maskModalSource.asObservable();
   public mobileVersionState = this.mobileVersionSource.asObservable();
@@ -55,12 +56,14 @@ export class GlobalStateServiceService {
         if (itemIndex.length > 1) {
           for (let index = 0; index < this.NAVIGATION_ITEMS[i].navigation_items.length; index++) {
             if (index === itemIndex[1]) {
+              this.currentNavigationItem = this.NAVIGATION_ITEMS[i].navigation_items[index];
               this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = true;
             } else {
               this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
             }
           }
         } else {
+          this.currentNavigationItem = this.NAVIGATION_ITEMS[i];
           this.NAVIGATION_ITEMS[i].isActive = true;
         }
       }

@@ -51,7 +51,7 @@
             <mat-icon>menu</mat-icon>
           </button>
           <span class="menu-block__mobile__section-name">
-            Current section
+            {{globalStateServiceService.currentNavigationItem ? globalStateServiceService.currentNavigationItem.name : 'ng-material-starter'}}
           </span>
         </div>
 
