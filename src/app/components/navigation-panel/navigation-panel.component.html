@@ -4,7 +4,7 @@
 
 
       <div class="logo-block">
-        <a href="/">
+        <a href="/" aria-label="logo link">
           <!--<img src="assets/icons/logo.svg" alt="logo"/>-->
           <div class="logo-block__logo">
 
@@ -47,7 +47,7 @@
 
 
         <div *ngIf="mobileVersion" class="menu-block__mobile">
-          <button mat-fab (click)="sideNav_open()" class="menu-block__mobile__sidenav-button">
+          <button mat-fab (click)="sideNav_open()" aria-label="sidenav button" class="menu-block__mobile__sidenav-button">
             <mat-icon>menu</mat-icon>
           </button>
           <span class="menu-block__mobile__section-name">
