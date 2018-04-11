@@ -3,16 +3,17 @@ import { Subject } from 'rxjs/Subject';
 
 import { NavigationItem } from '../classes/navigation-item';
 
+const NAVIGATION_ITEMS: NavigationItem[] = [
+  new NavigationItem('about', 'About', true),
+  new NavigationItem('products', 'Products', false, 'dropdown', [
+    new NavigationItem('product1', 'Product 1', false),
+    new NavigationItem('product2', 'Product 2', false)
+  ]),
+  new NavigationItem('contact', 'Contact', false)
+];
+
 @Injectable()
 export class GlobalStateServiceService {
-  private NAVIGATION_ITEMS: NavigationItem[] = [
-    new NavigationItem('about', 'about', true),
-    new NavigationItem('products', 'products', false, 'dropdown', [
-      new NavigationItem('product1', 'product1', false),
-      new NavigationItem('product2', 'Продукт 2', false)
-    ]),
-    new NavigationItem('contact', 'contact', false)
-  ];
   
   private sideNavOpenSource = new Subject<boolean>();
   private maskModalSource = new Subject<boolean>();
@@ -41,36 +42,36 @@ export class GlobalStateServiceService {
   }
 
   set navigationItemActive(itemIndex: number[]) {
-    for (let i = 0; i < this.NAVIGATION_ITEMS.length; i++) {
-      if (this.NAVIGATION_ITEMS[i].navigation_items.length > 0) {
-        for (let index = 0; index < this.NAVIGATION_ITEMS[i].navigation_items.length; index++) {
-          this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
+    for (let i = 0; i < NAVIGATION_ITEMS.length; i++) {
+      if (NAVIGATION_ITEMS[i].navigation_items.length > 0) {
+        for (let index = 0; index < NAVIGATION_ITEMS[i].navigation_items.length; index++) {
+          NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
         }
-        this.NAVIGATION_ITEMS[i].isActive = false;
+        NAVIGATION_ITEMS[i].isActive = false;
       } else {
-        this.NAVIGATION_ITEMS[i].isActive = false;
+        NAVIGATION_ITEMS[i].isActive = false;
       }
     }
-    for (let i = 0; i < this.NAVIGATION_ITEMS.length; i++) {
+    for (let i = 0; i < NAVIGATION_ITEMS.length; i++) {
       if (i === itemIndex[0]) {
         if (itemIndex.length > 1) {
-          for (let index = 0; index < this.NAVIGATION_ITEMS[i].navigation_items.length; index++) {
+          for (let index = 0; index < NAVIGATION_ITEMS[i].navigation_items.length; index++) {
             if (index === itemIndex[1]) {
-              this.currentNavigationItem = this.NAVIGATION_ITEMS[i].navigation_items[index];
-              this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = true;
+              this.currentNavigationItem = NAVIGATION_ITEMS[i].navigation_items[index];
+              NAVIGATION_ITEMS[i].navigation_items[index].isActive = true;
             } else {
-              this.NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
+              NAVIGATION_ITEMS[i].navigation_items[index].isActive = false;
             }
           }
         } else {
-          this.currentNavigationItem = this.NAVIGATION_ITEMS[i];
-          this.NAVIGATION_ITEMS[i].isActive = true;
+          this.currentNavigationItem = NAVIGATION_ITEMS[i];
+          NAVIGATION_ITEMS[i].isActive = true;
         }
       }
     }
   }
 
   get navigationItems(): any {
-    return this.NAVIGATION_ITEMS;
+    return NAVIGATION_ITEMS;
   }
 }

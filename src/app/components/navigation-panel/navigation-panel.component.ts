@@ -42,7 +42,7 @@ export class NavigationPanelComponent implements AfterViewInit, OnDestroy {
 
   public setLogoKiwiStyles(): any {
     const styles = {
-      transform: 'rotateY(' + this.mainWrapperScrollValue * 0.1 + 'deg)'
+      transform: 'rotateY(' + this.mainWrapperScrollValue * 0.2 + 'deg)'
     };
     return styles;
   }

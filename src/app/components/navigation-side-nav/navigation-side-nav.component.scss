@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 :host {
     border-right: 1px solid rgba(0, 0, 0, .14);
     bottom: 0;
@@ -13,9 +15,9 @@
     transform: translateZ(0) translateX(-257px);
     transform-style: preserve-3d;
     transition-delay: .1s;
-    transition-duration: .2s;
+    transition-duration: $backdrop-animation-duration;
     transition-property: transform, left;
-    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-timing-function: $backdrop-animation-timing-function;
     visibility: hidden;
     &.side-nav_open {
         transform: translateX(0);
@@ -53,7 +55,7 @@
                     background-color: #f5f5f5;
                 }
                 &.active {
-                    color: purple;
+                    color: #1A237E;
                     font-weight: 500;
                 }
             }

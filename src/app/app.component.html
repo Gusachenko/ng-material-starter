@@ -1,22 +1,23 @@
-<mat-sidenav-container class="mat-app-background">
-  <header>
-    <app-navigation-panel></app-navigation-panel>
-  </header>
+<header>
+  <app-navigation-panel></app-navigation-panel>
+</header>
 
-  <app-navigation-side-nav #sidenav></app-navigation-side-nav>
+<app-navigation-side-nav #sidenav></app-navigation-side-nav>
 
-  <div id="grid-cont" role="main">
-    <div class="grid-cont-wrapper">
-      <h3>Routing pages</h3>
-      <router-outlet></router-outlet>
-    </div>
+<div id="grid-cont" class="mat-app-background" role="main">
+  <div class="grid-cont-wrapper">
+    <router-outlet></router-outlet>
   </div>
+</div>
 
-  <footer class="mat-primary">
-    <div class="footer-wrapper">
-      <img alt="angular" class="footer-angular-logo" src="../assets/angular-white-transparent.svg">
+<footer class="mat-toolbar mat-primary">
+  <div class="footer-wrapper">
+    <img alt="angular logo" title="Angular Logo" class="footer-angular-logo" src="../assets/angular-white-transparent.svg">
+    <div class="footer-license-description">
+        <span>Code licensed under an MIT-style License.</span>
     </div>
-  </footer>
+    
+  </div>
+</footer>
 
-  <div class="qp-ui-mask-modal" [class.mask-modal_visible]="maskModalVisible" (click)="maskModalClose()"></div>
-</mat-sidenav-container>
+<div class="qp-ui-mask-modal" [class.mask-modal_visible]="maskModalVisible" (click)="maskModalClose()"></div>

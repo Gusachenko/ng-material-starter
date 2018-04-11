@@ -62,11 +62,11 @@
             
             
             <ng-container *ngIf="navigationItem.type == 'item'; else dropDownBlock">
-                <a routerLink="{{navigationItem.name}}" 
+                <a routerLink="{{navigationItem.id}}" 
                   routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
                   (click)="avtiveNavItem(i)"
                   class="menu-block__links-list__item"
-                  href="{{ '/' + navigationItem.name}}"
+                  href="{{ '/' + navigationItem.id}}"
                   role="button" 
                   mat-button 
                   >
