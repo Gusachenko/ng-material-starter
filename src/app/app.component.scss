@@ -74,3 +74,16 @@ footer {
         transition-delay: 0;
     }
 }
+
+@media screen and (max-width: 1024px)  {
+    footer {
+        .footer-wrapper {
+            
+            .footer-license-description {
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

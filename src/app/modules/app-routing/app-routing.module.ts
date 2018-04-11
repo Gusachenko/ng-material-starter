@@ -8,11 +8,12 @@ import { PageProduct2Component } from '../../components/routes/products/page-pro
 import { PageNotFoundComponent } from '../../components/routes/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
+  { path: '', component: PageAboutComponent },
   { path: 'about', component: PageAboutComponent },
   { path: 'product1', component: PageProduct1Component },
   { path: 'product2', component: PageProduct2Component },
   { path: 'contact', component: PageContactComponent },
-  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  // { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

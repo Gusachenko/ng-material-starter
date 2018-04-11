@@ -23,5 +23,18 @@
         "/assets/**"
       ]
     }
+  }, {
+    "name": "fonts",
+    "installMode": "lazy",
+    "updateMode": "prefetch",
+    "resources": {
+      "files": [
+        "/*.woff",
+        "/*.woff2",
+        "/*.svg",
+        "/*.eot",
+        "/*.ttf"
+      ]
+    }
   }]
 }

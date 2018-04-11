@@ -107,12 +107,12 @@ export class CommonMaterialModule {}
   ],
   imports: [
     BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     CommonMaterialModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
