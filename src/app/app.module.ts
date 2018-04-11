@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -102,7 +105,15 @@ export class CommonMaterialModule {}
     PageProduct2Component,
     NavigationSideNavComponent
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, HttpModule, CommonMaterialModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    CommonMaterialModule,
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
