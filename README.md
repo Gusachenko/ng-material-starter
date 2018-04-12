@@ -2,8 +2,6 @@
 
 Provides fast start for the Angular project with [Material Design](https://material.angular.io/). 
 
-![Desktop 1024px](https://github.com/Gusachenko/ng-material-starter/blob/master/github-assets/desktop1024.jpg?raw=true "Desktop 1024px resolution")
-
 ![Adaptive](https://github.com/Gusachenko/ng-material-starter/blob/master/github-assets/dimensions.png?raw=true "Adaptive resolution")
 
 
