@@ -107,6 +107,7 @@ export class CommonMaterialModule {}
   ],
   imports: [
     BrowserModule,
+    // ServiceWorkerModule.register('/projects/ng-material-starter/ngsw-worker.js', {enabled: environment.production}),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     BrowserAnimationsModule,
     FormsModule,

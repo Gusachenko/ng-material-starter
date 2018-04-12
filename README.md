@@ -2,19 +2,27 @@
 
 Provides fast start for the Angular project with [Material Design](https://material.angular.io/). 
 
+![Desktop 1024px](https://github.com/Gusachenko/ng-material-starter/blob/master/github-assets/desktop1024.jpg?raw=true "Desktop 1024px resolution")
+
+![Adaptive](https://github.com/Gusachenko/ng-material-starter/blob/master/github-assets/dimensions.png?raw=true "Adaptive resolution")
+
+
 ## Features:
 
 - Material Design
+- Material Animations
 - Included Material Icons, Roboto Fonts
-- Material animations
 - Nested menu navigation
 - Fixed header(navigation) to top
+- Sidenav navigation for Mobile devices
 - Responsive design for:
     + mobile < 768px
     + desktop > 768px
 - RxJS state management
-- Offline mode(manifest.json)
+- Offline mode(service-worker)
 - Project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
+### [DEMO](https://gusachenko.github.io/projects/ng-material-starter/ "Live demo preview")
 
 ## Getting started
 ```bash
@@ -25,4 +33,4 @@ npm start
 ```
 
 ## Useful Commands
-  * `npm start` - starts a dev server(default on `localhost:4200`) and opens browser with running app
+  * `npm start` - starts a dev server(default on `localhost:4200`) with running app
