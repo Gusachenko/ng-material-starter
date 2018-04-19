@@ -62,13 +62,12 @@
             
             
             <ng-container *ngIf="navigationItem.type == 'item'; else dropDownBlock">
-                <a routerLink="{{navigationItem.id}}" 
+                <a mat-button 
+                  routerLink="{{navigationItem.id}}" 
                   routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
                   (click)="avtiveNavItem(i)"
                   class="menu-block__links-list__item"
-                  href="{{ '/' + navigationItem.id}}"
                   role="button" 
-                  mat-button 
                   >
                   {{navigationItem.name}}
                 </a>
@@ -88,7 +87,6 @@
                     routerLink="{{nestedItem.id}}" 
                     routerLinkActive="{{nestedItem.isActive ? 'active' : '' }}"
                     (click)="avtiveNavItem([i,j], $event)"
-                    href="{{ '/' + nestedItem.id}}"
                     role="button" 
                     mat-menu-item
                     >

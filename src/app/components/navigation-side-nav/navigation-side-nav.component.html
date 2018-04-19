@@ -31,13 +31,15 @@
         <ng-container *ngFor="let navigationItem of navigationItems; let i=index;">
 
           <ng-container  *ngIf="navigationItem.type == 'item'; else dropdownBlock">
-            <mat-list-item class="side-nav__links-list__item"
-              title="{{navigationItem.name}}"
+            <mat-list-item 
               [ngClass]="navigationItem.isActive ? 'active' : ''"
-              routerLink="{{navigationItem.id}}"
-              routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
               (click)="avtiveNavItem([i])"
               (keyup.enter)="avtiveNavItem([i])"
+              [attr.tabindex]="navigationItem.isActive ? 0 : -1"
+              routerLink="{{navigationItem.id}}"
+              routerLinkActive="{{navigationItem.isActive ? 'active' : '' }}"
+              class="side-nav__links-list__item"
+              title="{{navigationItem.name}}"
             >                      
                 
                 <span mat-line>{{navigationItem.name}}</span>
@@ -50,7 +52,7 @@
           <ng-template #dropdownBlock>
 
             <mat-list-item #nestedTitle class="side-nav__nested-list-title side-nav__nested-list-title_expanded"
-                  tabindex="0" role="tab" aria-expanded="false"
+                  tabindex="-1" role="tab" aria-expanded="false"
                   title="{{navigationItem.name}}"
                   (click)="toggleNestedNavItem($event, nestedList)"
                   (keyup.enter)="toggleNestedNavItem($event, nestedList)"
@@ -62,14 +64,15 @@
 
             <div #nestedList class="side-nav__nested-list-items" aria-expanded="false">
               <mat-list>
-                  <mat-list-item *ngFor="let nestedNavigationItem of navigationItem.navigation_items; let j=index;"
-                      class="side-nav__links-list__item"
-                      title="{{nestedNavigationItem.name}}"                   
+                  <mat-list-item *ngFor="let nestedNavigationItem of navigationItem.navigation_items; let j=index;"    
                       [ngClass]="nestedNavigationItem.isActive ? 'active' : ''"
-                      routerLink="{{nestedNavigationItem.id}}"
-                      routerLinkActive="{{nestedNavigationItem.isActive ? 'active' : '' }}"
+                      [attr.tabindex]="nestedNavigationItem.isActive ? 0 : -1"
                       (click)="avtiveNavItem([i,j], $event)"
                       (keyup.enter)="avtiveNavItem([i,j], $event)"
+                      routerLink="{{nestedNavigationItem.id}}"
+                      routerLinkActive="{{nestedNavigationItem.isActive ? 'active' : '' }}"
+                      class="side-nav__links-list__item"
+                      title="{{nestedNavigationItem.name}}"
                     >
 
                         <span mat-line>{{nestedNavigationItem.name}}</span>
