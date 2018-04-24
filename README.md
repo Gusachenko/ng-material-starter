@@ -20,7 +20,7 @@ Provides fast start for the Angular project with [Material Design](https://mater
 - Offline mode(service-worker)
 - Project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
-### [DEMO](https://gusachenko.github.io/projects/ng-material-starter/ "Live demo preview")
+### [DEMO](https://stackblitz.com/github/gusachenko/ng-material-starter "Live demo preview")
 
 ## Getting started
 ```bash
