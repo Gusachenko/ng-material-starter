@@ -14,7 +14,6 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
 
 @Injectable()
 export class GlobalStateServiceService {
-  
   private sideNavOpenSource = new Subject<boolean>();
   private maskModalSource = new Subject<boolean>();
   private mobileVersionSource = new Subject<boolean>();

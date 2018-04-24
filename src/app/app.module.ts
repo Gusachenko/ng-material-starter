@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+/** If service worker needed */
+// import { ServiceWorkerModule } from '@angular/service-worker';
+// import { environment } from '../environments/environment';
 
 import {
   MatAutocompleteModule,
@@ -107,8 +108,8 @@ export class CommonMaterialModule {}
   ],
   imports: [
     BrowserModule,
-    // ServiceWorkerModule.register('/projects/ng-material-starter/ngsw-worker.js', {enabled: environment.production}),
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    /** If service worker needed */
+    // ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
