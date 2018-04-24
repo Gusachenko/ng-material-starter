@@ -15,7 +15,10 @@ export class AppComponent implements AfterViewInit {
   maskModalVisible = false;
   navigationItems: NavigationItem[];
 
-  constructor(private globalStateServiceService: GlobalStateServiceService, private renderer: Renderer2) {
+  constructor(
+    private globalStateServiceService: GlobalStateServiceService,
+    private renderer: Renderer2
+  ) {
     this.navigationItems = globalStateServiceService.navigationItems;
 
     globalStateServiceService.maskModalState.subscribe(state => {
@@ -53,7 +56,7 @@ export class AppComponent implements AfterViewInit {
 
   maskModalClose(): void {
     this.vc_sideNav.close();
-    
+
     //Timeout needed to correct hide Sidenav/Mask after transition animation end
     //To do: remove timeout
     setTimeout(() => {
