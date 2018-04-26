@@ -1,24 +1,24 @@
 @import '~@angular/material/theming';
 
 :host {
-    border-right: 1px solid rgba(0, 0, 0, .14);
-    bottom: 0;
-    background: #fff;
-    color: #212121;
-    display: block;
-    font-family: Roboto, sans-serif;
-    left: 0;
     position: fixed;
+    left: 0; 
     top: 0;
-    width: 256px;
+    bottom: 0;
     z-index: 4;
+    display: block;
+    visibility: hidden;
+    width: 256px;
+    border-right: 1px solid rgba(0, 0, 0, .14);
+    font-family: Roboto, sans-serif;
+    color: #212121;
+    background: #fff;
     transform: translateZ(0) translateX(-257px);
     transform-style: preserve-3d;
     transition-delay: .1s;
     transition-duration: $backdrop-animation-duration;
     transition-property: transform, left;
     transition-timing-function: $backdrop-animation-timing-function;
-    visibility: hidden;
     &.side-nav_open {
         transform: translateX(0);
     }
@@ -38,14 +38,14 @@
     }
     .side-nav-wrapper {
         nav {
-            .side-nav__links-list__item {
-                cursor: pointer;
-                color: #212121;
+            .side-nav__links-list__item {   
                 font-weight: 400;
                 letter-spacing: .1px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                cursor: pointer;
+                color: #212121;
                 span {
                     text-transform: capitalize;
                     font-weight: bold;
