@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-product1.component.scss']
 })
 export class PageProduct1Component implements OnInit {
-
+  loremItems = new Array(30);
   constructor() { }
 
   ngOnInit() {
