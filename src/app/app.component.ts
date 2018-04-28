@@ -39,6 +39,19 @@ export class AppComponent implements AfterViewInit {
     this.renderer.listen(window, 'scroll', event => {
       this.globalStateServiceService.changeMainWrapperScrollState(event.currentTarget.scrollY);
     });
+
+    this.vc_sideNav.animationEnd.subscribe((event: 'open' | 'close') => {
+      switch (event) {
+        case 'close':
+          this.vc_sideNav.visible = false;
+          this.maskModalVisible = false;
+          document.body.classList.remove('disable-scroll');
+          break;
+
+        default:
+          break;
+      }
+    });
   }
 
   private checkWindow(): void {
@@ -56,13 +69,5 @@ export class AppComponent implements AfterViewInit {
 
   maskModalClose(): void {
     this.vc_sideNav.close();
-
-    //Timeout needed to correct hide Sidenav/Mask after transition animation end
-    //To do: remove timeout
-    setTimeout(() => {
-      this.vc_sideNav.visible = false;
-      this.maskModalVisible = false;
-      document.body.classList.remove('disable-scroll');
-    }, 300);
   }
 }

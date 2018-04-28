@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Output, EventEmitter } from '@angular/core';
 
 import { GlobalStateServiceService } from '../../services/global-state-service.service';
 import { NavigationItem } from '../../classes/navigation-item';
@@ -12,13 +12,18 @@ import { NavigationItem } from '../../classes/navigation-item';
     '[class.side-nav_open]': '_open'
   }
 })
-export class NavigationSideNavComponent {
+export class NavigationSideNavComponent implements AfterViewInit {
+  @Output() animationEnd: EventEmitter<'open' | 'close'> = new EventEmitter();
+
   _visible = false;
   _open = false;
 
   public navigationItems: NavigationItem[];
 
-  constructor(private globalStateServiceService: GlobalStateServiceService) {
+  constructor(
+    private globalStateServiceService: GlobalStateServiceService,
+    private elementRef: ElementRef
+  ) {
     this.navigationItems = globalStateServiceService.navigationItems;
 
     globalStateServiceService.sideNavState.subscribe(state => {
@@ -27,6 +32,12 @@ export class NavigationSideNavComponent {
       } else {
         this.close();
       }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.addEventListener('transitionend', e => {
+      if (!this._open) this.animationEnd.emit('close');
     });
   }
 
